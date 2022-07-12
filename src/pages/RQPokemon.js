@@ -18,6 +18,8 @@ export default function RQFunction() {
       staleTime: 5000,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
+      refetchInterval: 5000,
+      refetchIntervalInBackground: false,
     }
   );
   console.log({ isLoading, isFetching });
