@@ -16,6 +16,8 @@ export default function RQFunction() {
     {
       cacheTime: 300000, // 5 minutes default time
       staleTime: 5000,
+      refetchOnMount: true,
+      refetchOnWindowFocus: true,
     }
   );
   console.log({ isLoading, isFetching });
