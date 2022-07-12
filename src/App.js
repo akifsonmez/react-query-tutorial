@@ -4,6 +4,7 @@ import Pokemon from "./pages/Pokemon";
 import RQPokemon from "./pages/RQPokemon";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/rqpokemon" element={<RQPokemon />}></Route>
           </Routes>
         </BrowserRouter>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </div>
   );
