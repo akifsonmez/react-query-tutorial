@@ -10,10 +10,15 @@ const fetchPokemon = () => {
 };
 
 export default function RQFunction() {
-  const { data, error, isLoading, isError } = useQuery(
+  const { data, error, isLoading, isError, isFetching } = useQuery(
     "pokemonList",
-    fetchPokemon
+    fetchPokemon,
+    {
+      cacheTime: 300000, // 5 minutes default time
+      staleTime: 5000,
+    }
   );
+  console.log({ isLoading, isFetching });
 
   if (isLoading) {
     return <div>Loading...</div>;
