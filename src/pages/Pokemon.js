@@ -7,7 +7,7 @@ export default function Pokemon() {
 
   useEffect(() => {
     let ignore = false;
-    fetch("http://localhost:4000/pokemon!")
+    fetch("http://localhost:4000/pokemon")
       .then((resp) => {
         if (!resp.ok) {
           throw new Error("Error with code " + resp.status);

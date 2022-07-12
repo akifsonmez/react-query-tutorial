@@ -1,17 +1,29 @@
 import { useQuery } from "react-query";
 
 const fetchPokemon = () => {
-  return fetch("http://localhost:4000/pokemon").then((resp) => resp.json());
+  return fetch("http://localhost:4000/pokemon").then((resp) => {
+    if (!resp.ok) {
+      throw new Error("Error with code " + resp.status);
+    }
+    return resp.json();
+  });
 };
 
 export default function RQFunction() {
-  const { data, error, isLoading } = useQuery("pokemonList", fetchPokemon);
+  const { data, error, isLoading, isError } = useQuery(
+    "pokemonList",
+    fetchPokemon
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (error) {
-    return <div>Error...</div>;
+  if (isError) {
+    return (
+      <div>
+        <h1>{error.message}</h1>
+      </div>
+    );
   }
 
   return (
