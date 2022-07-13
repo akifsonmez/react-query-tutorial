@@ -10,7 +10,7 @@ const fetchPokemon = () => {
 };
 
 export default function RQFunction() {
-  const { data, error, isLoading, isError, isFetching } = useQuery(
+  const { data, error, isLoading, isError, isFetching, refetch } = useQuery(
     "pokemonList",
     fetchPokemon,
     {
@@ -18,7 +18,7 @@ export default function RQFunction() {
       staleTime: 5000,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
-      refetchInterval: 5000,
+      refetchInterval: 50000,
       refetchIntervalInBackground: false,
     }
   );
@@ -38,6 +38,7 @@ export default function RQFunction() {
   return (
     <div>
       <h1>Pokemon List (with React Query)</h1>
+      <button onClick={refetch}>Refetch</button>
       {data?.map((p) => (
         <p key={p.name}>{p.name}</p>
       ))}
