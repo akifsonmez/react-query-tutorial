@@ -79,6 +79,10 @@
     {
       "name": "raticate",
       "url": "https://pokeapi.co/api/v2/pokemon/20/"
+    },
+    {
+      "name": "raticate2",
+      "url": "https://pokeapi.co/api/v2/pokemon/20/"
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const fetchPokemon = () => {
@@ -10,6 +11,16 @@ const fetchPokemon = () => {
 };
 
 export default function RQFunction() {
+  const [refetchInterval, setRefetchInterval] = useState(3000);
+
+  const onSuccess = (data) => {
+    console.log("this runs after successful data fetching", data);
+    data.length === 21 && setRefetchInterval(false);
+  };
+
+  const onError = (error) => {
+    console.log("this runs after unsuccessful data fetching", error);
+  };
   const { data, error, isLoading, isError, isFetching, refetch } = useQuery(
     "pokemonList",
     fetchPokemon,
@@ -18,8 +29,10 @@ export default function RQFunction() {
       staleTime: 5000,
       refetchOnMount: true,
       refetchOnWindowFocus: true,
-      refetchInterval: 50000,
+      refetchInterval: refetchInterval,
       refetchIntervalInBackground: false,
+      onSuccess,
+      onError,
     }
   );
   console.log({ isLoading, isFetching });
