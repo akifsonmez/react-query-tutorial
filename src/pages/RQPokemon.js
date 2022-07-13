@@ -1,14 +1,5 @@
 import { useState } from "react";
-import { useQuery } from "react-query";
-
-const fetchPokemon = () => {
-  return fetch("http://localhost:4000/pokemon").then((resp) => {
-    if (!resp.ok) {
-      throw new Error("Error with code " + resp.status);
-    }
-    return resp.json();
-  });
-};
+import { usePokemonNames } from "../hooks/usePokemonNames";
 
 export default function RQFunction() {
   const [refetchInterval, setRefetchInterval] = useState(3000);
@@ -21,23 +12,8 @@ export default function RQFunction() {
   const onError = (error) => {
     console.log("this runs after unsuccessful data fetching", error);
   };
-  const { data, error, isLoading, isError, isFetching, refetch } = useQuery(
-    "pokemonList",
-    fetchPokemon,
-    {
-      cacheTime: 300000, // 5 minutes default time
-      staleTime: 5000,
-      refetchOnMount: true,
-      refetchOnWindowFocus: true,
-      refetchInterval: refetchInterval,
-      refetchIntervalInBackground: false,
-      onSuccess,
-      onError,
-      select: (data) => {
-        return data.map(p => p.name)
-      }
-    }
-  );
+  const { data, error, isLoading, isError, isFetching, refetch } =
+    usePokemonNames({ onError, onSuccess, refetchInterval });
   console.log({ isLoading, isFetching });
 
   if (isLoading) {
