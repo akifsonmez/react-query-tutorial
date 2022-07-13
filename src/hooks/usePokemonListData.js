@@ -9,7 +9,7 @@ const fetchPokemon = () => {
   });
 };
 
-export const usePokemonNames = ({ refetchInterval, onSuccess, onError }) => {
+export const usePokemonListData = ({ refetchInterval, onSuccess, onError }) => {
   return useQuery("pokemonList", fetchPokemon, {
     cacheTime: 300000, // 5 minutes default time
     staleTime: 5000,
@@ -19,8 +19,8 @@ export const usePokemonNames = ({ refetchInterval, onSuccess, onError }) => {
     refetchIntervalInBackground: false,
     onSuccess,
     onError,
-    select: (data) => {
-      return data.map((p) => p.name);
-    },
+    // select: (data) => {
+    //   return data.map((p) => p.name);
+    // },
   });
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Pokemon() {
+export default function PokemonList() {
   const [pokemon, setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");

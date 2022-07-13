@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import Pokemon from "./pages/Pokemon";
-import RQPokemon from "./pages/RQPokemon";
+import PokemonList from "./pages/PokemonList";
+import RQPokemonList from "./pages/RQPokemonList";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -22,8 +22,8 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/pokemon" element={<Pokemon />}></Route>
-            <Route path="/rqpokemon" element={<RQPokemon />}></Route>
+            <Route path="/pokemon" element={<PokemonList />}></Route>
+            <Route path="/rqpokemon" element={<RQPokemonList />}></Route>
           </Routes>
         </BrowserRouter>
         <ReactQueryDevtools />
