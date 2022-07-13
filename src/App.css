@@ -19,3 +19,17 @@ nav a {
   max-width: 960px;
   margin: 0 auto;
 }
+
+.pokemon-list a {
+  padding: 2px 16px;
+  background: #fff;
+  display: block;
+  margin: 20px 10px;
+  border-left: 8px solid #fff;
+  text-decoration: none;
+  color: black;
+}
+
+.pokemon-list a:hover {
+  border-left: 8px solid #4979ff;
+}

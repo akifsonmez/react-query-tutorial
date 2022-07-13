@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { usePokemonListData } from "../hooks/usePokemonListData";
+import { Link } from "react-router-dom";
 
 export default function RQPokemonList() {
   const [refetchInterval, setRefetchInterval] = useState(3000);
@@ -35,7 +36,11 @@ export default function RQPokemonList() {
         <p key={p}>{p}</p>
       ))} */}
       {data?.map((p) => (
-        <p key={p.name}>{p.name}</p>
+        <div key={p.id} className="pokemon-list">
+          <Link to={`/rqpokemon/${p.id}`}>
+            <h3>{p.name.toUpperCase()}</h3>
+          </Link>
+        </div>
       ))}
     </div>
   );

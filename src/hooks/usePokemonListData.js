@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 
-const fetchPokemon = () => {
+const fetchPokemonList = () => {
   return fetch("http://localhost:4000/pokemon").then((resp) => {
     if (!resp.ok) {
       throw new Error("Error with code " + resp.status);
@@ -10,7 +10,7 @@ const fetchPokemon = () => {
 };
 
 export const usePokemonListData = ({ refetchInterval, onSuccess, onError }) => {
-  return useQuery("pokemonList", fetchPokemon, {
+  return useQuery("pokemonList", fetchPokemonList, {
     cacheTime: 300000, // 5 minutes default time
     staleTime: 5000,
     refetchOnMount: true,

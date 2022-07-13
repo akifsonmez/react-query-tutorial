@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import PokemonList from "./pages/PokemonList";
-import RQPokemonList from "./pages/RQPokemonList";
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import PokemonList from "./pages/PokemonList";
+import RQPokemon from "./pages/RQPokemon";
+import RQPokemonList from "./pages/RQPokemonList";
 
 const queryClient = new QueryClient();
 
@@ -21,9 +22,10 @@ function App() {
             </nav>
           </div>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/pokemon" element={<PokemonList />}></Route>
-            <Route path="/rqpokemon" element={<RQPokemonList />}></Route>
+            <Route path="/" element={<Home />} />
+            <Route path="pokemon" element={<PokemonList />} />
+            <Route path="rqpokemon" element={<RQPokemonList />}></Route>
+            <Route path="rqpokemon/:pokemonId" element={<RQPokemon />} />
           </Routes>
         </BrowserRouter>
         <ReactQueryDevtools />
