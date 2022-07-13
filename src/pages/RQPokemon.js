@@ -33,6 +33,9 @@ export default function RQFunction() {
       refetchIntervalInBackground: false,
       onSuccess,
       onError,
+      select: (data) => {
+        return data.map(p => p.name)
+      }
     }
   );
   console.log({ isLoading, isFetching });
@@ -53,7 +56,7 @@ export default function RQFunction() {
       <h1>Pokemon List (with React Query)</h1>
       <button onClick={refetch}>Refetch</button>
       {data?.map((p) => (
-        <p key={p.name}>{p.name}</p>
+        <p key={p}>{p}</p>
       ))}
     </div>
   );
