@@ -15,7 +15,8 @@ export default function RQPokemon() {
 
   return (
     <div>
-      <p>Poke Id: {pokemonId}</p>
+      <p>Poke Height: {data.height}</p>
+      <p>Poke Weight: {data.weight}</p>
       <p>Poke Name: {data.name}</p>
     </div>
   );

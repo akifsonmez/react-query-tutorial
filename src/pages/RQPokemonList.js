@@ -37,7 +37,7 @@ export default function RQPokemonList() {
       ))} */}
       {data?.map((p) => (
         <div key={p.id} className="pokemon-list">
-          <Link to={`/rqpokemon/${p.id}`}>
+          <Link to={`/rqpokemon/${p.name}`}>
             <h3>{p.name.toUpperCase()}</h3>
           </Link>
         </div>

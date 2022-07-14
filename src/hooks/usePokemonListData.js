@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 
 const fetchPokemonList = () => {
-  return fetch("http://localhost:4000/pokemon").then((resp) => {
+  return fetch("https://pokeapi.co/api/v2/pokemon/").then((resp) => {
     if (!resp.ok) {
       throw new Error("Error with code " + resp.status);
     }
@@ -19,8 +19,8 @@ export const usePokemonListData = ({ refetchInterval, onSuccess, onError }) => {
     refetchIntervalInBackground: false,
     onSuccess,
     onError,
-    // select: (data) => {
-    //   return data.map((p) => p.name);
-    // },
+    select: (data) => {
+      return data.results;
+    },
   });
 };

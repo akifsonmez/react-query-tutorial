@@ -7,7 +7,7 @@ export default function PokemonList() {
 
   useEffect(() => {
     let ignore = false;
-    fetch("http://localhost:4000/pokemon")
+    fetch("https://pokeapi.co/api/v2/pokemon/")
       .then((resp) => {
         if (!resp.ok) {
           throw new Error("Error with code " + resp.status);
@@ -16,7 +16,7 @@ export default function PokemonList() {
       })
       .then((data) => {
         if (!ignore) {
-          setPokemon(data);
+          setPokemon(data.results);
           setIsLoading(false);
         }
       })
