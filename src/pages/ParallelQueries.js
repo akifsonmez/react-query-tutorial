@@ -30,5 +30,10 @@ export default function ParallelQueries() {
 
   console.log(berriesData, locationData);
 
-  return <div>Parallel Queries, results logged to the console</div>;
+  return (
+    <div>
+      <h1>Parallel Queries</h1>
+      <p>results logged to the console</p>
+    </div>
+  );
 }
