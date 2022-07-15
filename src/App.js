@@ -8,6 +8,7 @@ import PokemonList from "./pages/PokemonList";
 import RQPokemon from "./pages/RQPokemon";
 import RQPokemonList from "./pages/RQPokemonList";
 import DynamicParallelQueries from "./pages/DynamicParallelQueries";
+import DependentQueries from "./pages/DependentQueries";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
               <Link to="/rqpokemon">RQ Pokemon</Link>
               <Link to="/parallelQueries">Parallel Queries</Link>
               <Link to="/dynamicParallelQueries">Dynamic Parallel Queries</Link>
+              <Link to="/dependentQueries">Dependent Queries</Link>
             </nav>
           </div>
           <Routes>
@@ -34,9 +36,12 @@ function App() {
             <Route
               path="dynamicParallelQueries"
               element={
-                <DynamicParallelQueries pokemonNames={["ivysaur", "bulbasaur"]} />
+                <DynamicParallelQueries
+                  pokemonNames={["ivysaur", "bulbasaur"]}
+                />
               }
             />
+            <Route path="dependentQueries" element={<DependentQueries />} />
           </Routes>
         </BrowserRouter>
         <ReactQueryDevtools />

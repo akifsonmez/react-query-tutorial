@@ -11,7 +11,7 @@ const fetchPokemon = async ({ queryKey }) => {
   );
 };
 
-export default function DynamicParallelQueries({ pokemonIds: pokemonNames }) {
+export default function DynamicParallelQueries({ pokemonNames }) {
   const queries = pokemonNames.map((p) => ({
     queryKey: ["dynamic-pokemon", p],
     queryFn: fetchPokemon,
