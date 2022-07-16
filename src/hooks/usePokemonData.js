@@ -12,5 +12,7 @@ const fetchPokemon = ({ queryKey }) => {
 };
 
 export function usePokemonData(pokemonId) {
-  return useQuery(["pokemon", pokemonId], fetchPokemon);
+  return useQuery(["pokemon", pokemonId], fetchPokemon, {
+    initialData: { name: "Inital data example" },
+  });
 }
