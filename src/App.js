@@ -2,13 +2,14 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
+import DependentQueries from "./pages/DependentQueries";
+import DynamicParallelQueries from "./pages/DynamicParallelQueries";
 import Home from "./pages/Home";
+import PaginatedQueries from "./pages/PaginatedQueries";
 import ParallelQueries from "./pages/ParallelQueries";
 import PokemonList from "./pages/PokemonList";
 import RQPokemon from "./pages/RQPokemon";
 import RQPokemonList from "./pages/RQPokemonList";
-import DynamicParallelQueries from "./pages/DynamicParallelQueries";
-import DependentQueries from "./pages/DependentQueries";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ function App() {
               <Link to="/parallelQueries">Parallel Queries</Link>
               <Link to="/dynamicParallelQueries">Dynamic Parallel Queries</Link>
               <Link to="/dependentQueries">Dependent Queries</Link>
+              <Link to="/paginatedQueries">Paginated Queries</Link>
             </nav>
           </div>
           <Routes>
@@ -33,6 +35,7 @@ function App() {
             <Route path="rqpokemon" element={<RQPokemonList />}></Route>
             <Route path="rqpokemon/:pokemonId" element={<RQPokemon />} />
             <Route path="parallelQueries" element={<ParallelQueries />} />
+            <Route path="paginatedQueries" element={<PaginatedQueries />} />
             <Route
               path="dynamicParallelQueries"
               element={
