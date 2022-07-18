@@ -5,6 +5,7 @@ import "./App.css";
 import DependentQueries from "./pages/DependentQueries";
 import DynamicParallelQueries from "./pages/DynamicParallelQueries";
 import Home from "./pages/Home";
+import InfiniteQueries from "./pages/InfiniteQueries";
 import PaginatedQueries from "./pages/PaginatedQueries";
 import ParallelQueries from "./pages/ParallelQueries";
 import PokemonList from "./pages/PokemonList";
@@ -27,6 +28,7 @@ function App() {
               <Link to="/dynamicParallelQueries">Dynamic Parallel Queries</Link>
               <Link to="/dependentQueries">Dependent Queries</Link>
               <Link to="/paginatedQueries">Paginated Queries</Link>
+              <Link to="/infiniteQueries">Infinite Queries</Link>
             </nav>
           </div>
           <Routes>
@@ -45,6 +47,7 @@ function App() {
               }
             />
             <Route path="dependentQueries" element={<DependentQueries />} />
+            <Route path="infiniteQueries" element={<InfiniteQueries />} />
           </Routes>
         </BrowserRouter>
         <ReactQueryDevtools />

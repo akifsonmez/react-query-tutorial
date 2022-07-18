@@ -33,7 +33,7 @@ export default function PaginatedQueries() {
 
   return (
     <div>
-      <h1>Pokemon List (with React Query)</h1>
+      <h1>Pokemon List (with React Query Pagination) </h1>
       <button
         onClick={() => {
           setOffset(offset - 20);
