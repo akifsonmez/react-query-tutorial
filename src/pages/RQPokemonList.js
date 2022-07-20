@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { usePokemonListData } from "../hooks/usePokemonListData";
 import { Link } from "react-router-dom";
+import { useAddPokemon } from "../hooks/useAddPokemon";
 
 export default function RQPokemonList() {
   const [refetchInterval, setRefetchInterval] = useState(3000);
+  const { mutate } = useAddPokemon();
 
   const onSuccess = (data) => {
     console.log("this runs after successful data fetching", data);
@@ -31,6 +33,7 @@ export default function RQPokemonList() {
   return (
     <div>
       <h1>Pokemon List (with React Query)</h1>
+      <button onClick={mutate}>Mutate</button>
       <button onClick={refetch}>Refetch</button>
       {/* {data?.map((p) => (
         <p key={p}>{p}</p>
