@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 function postPokemon() {
   fetch("http://localhost:5000/pokemon", {
@@ -15,5 +15,10 @@ function postPokemon() {
 }
 
 export function useAddPokemon() {
-  return useMutation(postPokemon);
+  const queryClient = useQueryClient();
+  return useMutation(postPokemon, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("pokemonList");
+    },
+  });
 }
