@@ -15,8 +15,8 @@ export const usePokemonListData = ({ refetchInterval, onSuccess, onError }) => {
     staleTime: 5000,
     refetchOnMount: true,
     refetchOnWindowFocus: true,
-    refetchInterval: refetchInterval,
-    refetchIntervalInBackground: false,
+    //refetchInterval: refetchInterval,
+    //refetchIntervalInBackground: false,
     onSuccess,
     onError,
     select: (data) => {

@@ -16,9 +16,22 @@ function postPokemon() {
 
 export function useAddPokemon() {
   const queryClient = useQueryClient();
-  return useMutation(postPokemon, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("pokemonList");
+  return useMutation("add-pokemon", postPokemon, {
+    onSuccess: (data) => {
+      // queryClient.invalidateQueries("pokemonList");
+      queryClient.setQueriesData("pokemonList", (oldCachedData) => {
+        console.log(data);
+        return {
+          ...oldCachedData,
+          results: [
+            ...oldCachedData.results,
+            {
+              name: "akif",
+              url: "test",
+            },
+          ],
+        };
+      });
     },
   });
 }
