@@ -17,10 +17,28 @@ function postPokemon() {
 export function useAddPokemon() {
   const queryClient = useQueryClient();
   return useMutation("add-pokemon", postPokemon, {
-    onSuccess: (data) => {
-      // queryClient.invalidateQueries("pokemonList");
+    // onSuccess: (data) => {
+    //   // queryClient.invalidateQueries("pokemonList");
+    //   queryClient.setQueriesData("pokemonList", (oldCachedData) => {
+    //     console.log(data);
+    //     return {
+    //       ...oldCachedData,
+    //       results: [
+    //         ...oldCachedData.results,
+    //         {
+    //           name: "akif",
+    //           url: "test",
+    //         },
+    //       ],
+    //     };
+    //   });
+    // },
+
+    onMutate: async () => {
+      await queryClient.cancelQueries("pokemonList");
+      const oldData = queryClient.getQueriesData("pokemonList");
+
       queryClient.setQueriesData("pokemonList", (oldCachedData) => {
-        console.log(data);
         return {
           ...oldCachedData,
           results: [
@@ -32,6 +50,13 @@ export function useAddPokemon() {
           ],
         };
       });
+      return { oldData };
+    },
+    onError: (_error, _hero, context) => {
+      queryClient.setQueriesData("pokemonList", context.oldData);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries("pokemonList");
     },
   });
 }
